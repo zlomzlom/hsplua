@@ -66,6 +66,9 @@ static int cmdfunc( int cmd )
         case 0x25: hsplua_cmd::hl_newmetatable();         break;
         case 0x28: hsplua_cmd::hl_error();                break;
         case 0x29: hsplua_cmd::hl_pushdim();              break;
+        case 0x9B: hsplua_func::hl_pcall();               break;
+        case 0x9C: hsplua_func::hl_dofile();              break;
+        case 0x9D: hsplua_func::hl_dostring();            break;
 		default: puterror( HSPERR_UNSUPPORTED_FUNCTION ); break;
 	}
 	return RUNMODE_RUN;
@@ -115,6 +118,7 @@ static void *reffunc( int *type_res, int cmd )
         case 0x9B: *type_res = hsplua_func::hl_pcall();           break;
         case 0x9C: *type_res = hsplua_func::hl_dofile();          break;
         case 0x9D: *type_res = hsplua_func::hl_dostring();        break;
+        case 0x9E: *type_res = hsplua_func::hl_seekvar();         break;
 		default: puterror( HSPERR_UNSUPPORTED_FUNCTION );         break;
 	}
 

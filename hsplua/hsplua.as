@@ -59,3 +59,4 @@
 #cmd hl_pcall                   0x9B
 #cmd hl_dofile                  0x9C
 #cmd hl_dostring                0x9D
+#cmd hl_seekvar                 0x9E

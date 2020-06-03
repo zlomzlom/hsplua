@@ -11,7 +11,7 @@ int labelFunc(lua_State* l) {
         PVal* pvResult = *(exinfo->mpval);
         switch (pvResult->flag) {
             case HSPVAR_FLAG_STR:
-                lua_pushlstring(currState(), pvResult->pt, pvResult->len[0]);
+                lua_pushstring(currState(), pvResult->pt);
                 return 1;
             case HSPVAR_FLAG_INT:
                 lua_pushinteger(currState(), *(int*)pvResult->pt);

@@ -72,3 +72,29 @@ int hsplua_func::hl_dostring() {
     ref_val.ival = luaL_dostring(currState(), exinfo->HspFunc_prm_gets());
     return HSPVAR_FLAG_INT;
 }
+
+static char* nil = "__nil__";
+
+int hsplua_func::hl_seekvar() {
+    int index = exinfo->HspFunc_seekvar(exinfo->HspFunc_prm_gets());
+    if (index == -1) {
+        ref_val.sval = nil;
+        return HSPVAR_FLAG_STR;
+    }
+
+    PVal* pvResult = &ctx->mem_var[index];
+    switch (pvResult->flag) {
+    case HSPVAR_FLAG_STR:
+        ref_val.sval = pvResult->pt;
+        return HSPVAR_FLAG_STR;
+    case HSPVAR_FLAG_INT:
+        ref_val.ival = *(int*)pvResult->pt;
+        return HSPVAR_FLAG_INT;
+    case HSPVAR_FLAG_DOUBLE:
+        ref_val.dval = *(double*)pvResult->pt;
+        return HSPVAR_FLAG_DOUBLE;
+    default:
+        ref_val.sval = nil;
+        return HSPVAR_FLAG_STR;
+    }
+}

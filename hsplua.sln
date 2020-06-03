@@ -8,8 +8,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "hsplua", "hsplua.vcxproj", 
 		{97F9C3DD-EC36-416C-A467-1650C26C0A4E} = {97F9C3DD-EC36-416C-A467-1650C26C0A4E}
 	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lua52", "Project1\Project1.vcxproj", "{97F9C3DD-EC36-416C-A467-1650C26C0A4E}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32

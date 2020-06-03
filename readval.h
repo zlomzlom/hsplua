@@ -13,6 +13,7 @@ namespace hsplua_func {
     int hl_pcall();
     int hl_dofile();
     int hl_dostring();
+    int hl_seekvar();
 }
 
 #endif
