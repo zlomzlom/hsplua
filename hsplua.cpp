@@ -111,7 +111,8 @@ static void *reffunc( int *type_res, int cmd )
 		case 0x93: *type_res = hsplua_func::hl_tonumber();        break;
 		case 0x94: *type_res = hsplua_func::hl_topointer();       break;
 		case 0x95: *type_res = hsplua_func::hl_tostring();        break;
-		case 0x96: *type_res = hsplua_func::hl_touserdata();      break;
+		case 0x96: *type_res = hsplua_func::hl_tolstring();       break;
+		case 0x97: *type_res = hsplua_func::hl_touserdata();      break;
 		case 0x98: *type_res = hsplua_func::hl_gccount();         break;
         case 0x99: *type_res = hsplua_func::hl_gcisrunning();     break;
         case 0x9A: *type_res = hsplua_func::hl_gettop();          break;

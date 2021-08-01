@@ -8,6 +8,7 @@ namespace hsplua_func {
 	int hl_tonumber();
 	int hl_topointer();
 	int hl_tostring();
+    int hl_tolstring();
     int hl_touserdata();
     int hl_gettop();
     int hl_pcall();
