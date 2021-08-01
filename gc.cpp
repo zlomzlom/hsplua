@@ -45,11 +45,11 @@ int hsplua_func::hl_gcisrunning() { // GCが実行中かどうかを返す
 }
 
 void hsplua_cmd::hl_gcgen() { // 世代別GC
-	lua_gc(currState(), LUA_GCGEN, 0);
+    lua_gc(currState(), LUA_GCCOLLECT, 0);
 	return;
 }
 
 void hsplua_cmd::hl_gcinc() { // インクリメンタルGC
-	lua_gc(currState(), LUA_GCINC, 0);
+    lua_gc(currState(), LUA_GCSTEP, 0);
 	return;
 }

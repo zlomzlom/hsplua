@@ -65,21 +65,6 @@
     <ClInclude Include="hsp\hspvar_core.h">
       <Filter>HSP</Filter>
     </ClInclude>
-    <ClInclude Include="lua\include\lauxlib.h">
-      <Filter>Lua</Filter>
-    </ClInclude>
-    <ClInclude Include="lua\include\lua.h">
-      <Filter>Lua</Filter>
-    </ClInclude>
-    <ClInclude Include="lua\include\lua.hpp">
-      <Filter>Lua</Filter>
-    </ClInclude>
-    <ClInclude Include="lua\include\luaconf.h">
-      <Filter>Lua</Filter>
-    </ClInclude>
-    <ClInclude Include="lua\include\lualib.h">
-      <Filter>Lua</Filter>
-    </ClInclude>
     <ClInclude Include="hsplua.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
@@ -106,6 +91,21 @@
     </ClInclude>
     <ClInclude Include="dim.h">
       <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="lua53\src\lauxlib.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua53\src\lua.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua53\src\lua.hpp">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua53\src\luaconf.h">
+      <Filter>Lua</Filter>
+    </ClInclude>
+    <ClInclude Include="lua53\src\lualib.h">
+      <Filter>Lua</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

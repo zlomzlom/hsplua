@@ -20,14 +20,14 @@
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -56,7 +56,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>$(TargetDir)lua52.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(TargetDir)lua53.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -75,7 +75,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>$(TargetDir)lua52.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>$(TargetDir)lua53.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -102,11 +102,11 @@
     <ClInclude Include="hsp\hsp3struct.h" />
     <ClInclude Include="hsp\hspvar_core.h" />
     <ClInclude Include="labelfunc.h" />
-    <ClInclude Include="lua\include\lauxlib.h" />
-    <ClInclude Include="lua\include\lua.h" />
-    <ClInclude Include="lua\include\lua.hpp" />
-    <ClInclude Include="lua\include\luaconf.h" />
-    <ClInclude Include="lua\include\lualib.h" />
+    <ClInclude Include="lua53\src\lauxlib.h" />
+    <ClInclude Include="lua53\src\lua.h" />
+    <ClInclude Include="lua53\src\lua.hpp" />
+    <ClInclude Include="lua53\src\luaconf.h" />
+    <ClInclude Include="lua53\src\lualib.h" />
     <ClInclude Include="pushpop.h" />
     <ClInclude Include="readval.h" />
   </ItemGroup>

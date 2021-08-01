@@ -1,7 +1,7 @@
 #ifndef __LABELFUNC_H
 #define __LABELFUNC_H
 
-#include "lua/include/lua.hpp"
+#include "lua53/src/lua.hpp"
 
 int labelFunc(lua_State* l);
 

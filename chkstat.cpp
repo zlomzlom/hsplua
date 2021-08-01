@@ -1,6 +1,7 @@
 #include "chkstat.h"
 #include "hsplua.h"
 #include "hsp/hsp3plugin.h"
+#include <stdexcept>
 
 void checkState(int statNum) {
 	try {

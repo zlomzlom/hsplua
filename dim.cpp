@@ -46,7 +46,7 @@ static int hl_dim_len(lua_State* L) {
 
 static int hl_dim_index(lua_State* L) {
     DimWrapper *ud = hl_dim_check(L);
-    int index = luaL_checkint(L, 2);
+    int index = (int)luaL_checkinteger(L, 2);
     luaL_argcheck(L, 0 <= index && index <= ud->pval->len[ud->level]-1, 2, "index out of range");
     
     if (ud->level != hl_dim_dimensions(ud)) {
@@ -90,7 +90,7 @@ static int hl_dim_newindex(lua_State* L) {
     double var_d;
     const char* var_s;
     DimWrapper *ud = hl_dim_check(L);
-    int index = luaL_checkint(L, 2);
+    int index = (int)luaL_checkinteger(L, 2);
     luaL_argcheck(L, 0 <= index && index <= ud->pval->len[ud->level]-1, 2, "index out of range");
 
     if (ud->level != hl_dim_dimensions(ud)) {
@@ -109,7 +109,7 @@ static int hl_dim_newindex(lua_State* L) {
         exinfo->HspFunc_prm_setva(ud->pval, ud->pval->offset, HSPVAR_FLAG_STR, var_s);
         break;
     case HSPVAR_FLAG_INT:
-        var_i = luaL_checkint(L, 3);
+        var_i = (int)luaL_checkinteger(L, 3);
         exinfo->HspFunc_prm_setva(ud->pval, ud->pval->offset, HSPVAR_FLAG_INT, &var_i);
         break;
     case HSPVAR_FLAG_DOUBLE:
