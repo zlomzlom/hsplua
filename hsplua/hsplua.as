@@ -61,3 +61,7 @@
 #cmd hl_dofile                  0x9C
 #cmd hl_dostring                0x9D
 #cmd hl_seekvar                 0x9E
+#cmd hl_checknumber             0x9F
+#cmd hl_checkinteger            0xA0
+#cmd hl_checkstring             0xA1
+#cmd hl_checklstring            0xA2

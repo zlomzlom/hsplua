@@ -14,6 +14,10 @@ namespace hsplua_func {
 	int hl_istable();
 	int hl_isthread();
 	int hl_isuserdata();
+	int hl_checknumber();
+	int hl_checkinteger();
+	int hl_checkstring();
+	int hl_checklstring();
 }
 
 #endif

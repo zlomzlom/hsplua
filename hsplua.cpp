@@ -117,6 +117,10 @@ static void *reffunc( int *type_res, int cmd )
         case 0x9C: *type_res = hsplua_func::hl_dofile();          break;
         case 0x9D: *type_res = hsplua_func::hl_dostring();        break;
         case 0x9E: *type_res = hsplua_func::hl_seekvar();         break;
+		case 0x9F: *type_res = hsplua_func::hl_checknumber();     break;
+		case 0xA0: *type_res = hsplua_func::hl_checkinteger();    break;
+		case 0xA1: *type_res = hsplua_func::hl_checkstring();     break;
+		case 0xA2: *type_res = hsplua_func::hl_checklstring();    break;
 		default: puterror( HSPERR_UNSUPPORTED_FUNCTION );         break;
 	}
 

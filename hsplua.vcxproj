@@ -110,6 +110,10 @@
     <ClInclude Include="pushpop.h" />
     <ClInclude Include="readval.h" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="hsplua\hsplua.as" />
+    <None Include="hsplua\hsplua.hs" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

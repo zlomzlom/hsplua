@@ -108,4 +108,12 @@
       <Filter>Lua</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="hsplua\hsplua.as">
+      <Filter>リソース ファイル</Filter>
+    </None>
+    <None Include="hsplua\hsplua.hs">
+      <Filter>リソース ファイル</Filter>
+    </None>
+  </ItemGroup>
 </Project>
