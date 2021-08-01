@@ -93,9 +93,12 @@ static char* nil = "__nil__";
 int hsplua_func::hl_seekvar() {
     int index = exinfo->HspFunc_seekvar(exinfo->HspFunc_prm_gets());
     if (index == -1) {
+		stat = -1;
         ref_val.sval = nil;
         return HSPVAR_FLAG_STR;
     }
+
+	stat = 0;
 
     PVal* pvResult = &ctx->mem_var[index];
     switch (pvResult->flag) {

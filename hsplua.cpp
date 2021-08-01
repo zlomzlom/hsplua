@@ -66,9 +66,6 @@ static int cmdfunc( int cmd )
         case 0x25: hsplua_cmd::hl_newmetatable();         break;
         case 0x28: hsplua_cmd::hl_error();                break;
         case 0x29: hsplua_cmd::hl_pushdim();              break;
-        case 0x9B: hsplua_func::hl_pcall();               break;
-        case 0x9C: hsplua_func::hl_dofile();              break;
-        case 0x9D: hsplua_func::hl_dostring();            break;
 		default: puterror( HSPERR_UNSUPPORTED_FUNCTION ); break;
 	}
 	return RUNMODE_RUN;
