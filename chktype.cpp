@@ -43,6 +43,11 @@ int hsplua_func::hl_isnumber() {
 	return HSPVAR_FLAG_INT;
 }
 
+int hsplua_func::hl_isinteger() {
+	ref_val.ival = lua_isinteger(currState(), exinfo->HspFunc_prm_geti());
+	return HSPVAR_FLAG_INT;
+}
+
 int hsplua_func::hl_isstring() {
 	ref_val.ival = lua_isstring(currState(), exinfo->HspFunc_prm_geti());
 	return HSPVAR_FLAG_INT;

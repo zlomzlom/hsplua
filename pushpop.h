@@ -13,6 +13,7 @@ namespace hsplua_cmd {
 	void hl_pushstring();
 	void hl_pushvalue();
     void hl_pushvarptr();
+    void hl_pushhspvalue();
     void hl_gettable();
     void hl_getmetatable();
     void hl_getglobal();
@@ -24,6 +25,7 @@ namespace hsplua_cmd {
     void hl_pushglobaltable();
     void hl_newtable();
     void hl_newmetatable();
+    void hl_settop();
 }
 
 #endif

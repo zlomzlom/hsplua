@@ -59,6 +59,33 @@ void hsplua_cmd::hl_pushvalue() {
 	return;
 }
 
+void hsplua_cmd::hl_pushhspvalue() {
+	PVal* val = exinfo->HspFunc_prm_getpval();
+    const unsigned short* label = NULL;
+
+    switch (val->flag) {
+    case HSPVAR_FLAG_STR:
+        lua_pushstring(currState(), val->pt);
+        break;
+    case HSPVAR_FLAG_INT:
+        lua_pushinteger(currState(), *(int*)val->pt);
+        break;
+    case HSPVAR_FLAG_DOUBLE:
+        lua_pushnumber(currState(), *(double*)val->pt);
+        break;
+    case HSPVAR_FLAG_LABEL:
+        label = (unsigned short* )val->pt;
+        lua_pushinteger(currState(), (int)label);
+        lua_pushcclosure(currState(), labelFunc, 1);
+        break;
+    default:
+        lua_pushlightuserdata(currState(), (void*)val->pt);
+        break;
+    }
+
+    return;
+}
+
 void hsplua_cmd::hl_pushvarptr() {
 	PVal* pval = exinfo->HspFunc_prm_getpval();
 	lua_pushlightuserdata(currState(), pval->pt);
@@ -121,5 +148,10 @@ void hsplua_cmd::hl_newmetatable() {
 
 void hsplua_cmd::hl_newtable() {
     lua_newtable(currState());
+    return;
+}
+
+void hsplua_cmd::hl_settop() {
+    lua_settop(currState(), exinfo->HspFunc_prm_geti());
     return;
 }

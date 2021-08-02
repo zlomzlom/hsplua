@@ -10,18 +10,11 @@ int labelFunc(lua_State* l) {
     if (ctx->retval_level == (ctx->sublev + 1)) {
         PVal* pvResult = *(exinfo->mpval);
         switch (pvResult->flag) {
-            case HSPVAR_FLAG_STR:
-                lua_pushstring(currState(), pvResult->pt);
-                return 1;
             case HSPVAR_FLAG_INT:
-                lua_pushinteger(currState(), *(int*)pvResult->pt);
-                return 1;
-            case HSPVAR_FLAG_DOUBLE:
-                lua_pushnumber(currState(), *(double*)pvResult->pt);
-                return 1;
+                return *(int*)pvResult->pt;
             default:
-                break;
+                return 0;
         }
     }
-	return 0;
+    return 0;
 }

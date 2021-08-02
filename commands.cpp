@@ -43,7 +43,3 @@ void hsplua_cmd::hl_close() { // Luaステート破棄
 	luaStates[statNum] = NULL;
 	return;
 }
-
-void hsplua_cmd::hl_error() {
-    luaL_error(currState(), exinfo->HspFunc_prm_gets());
-}

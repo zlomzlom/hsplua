@@ -15,6 +15,7 @@ namespace hsplua_func {
     int hl_dofile();
     int hl_dostring();
     int hl_seekvar();
+    int hl_error();
 }
 
 #endif

@@ -64,8 +64,9 @@ static int cmdfunc( int cmd )
         case 0x23: hsplua_cmd::hl_pushglobaltable();      break;
         case 0x24: hsplua_cmd::hl_newtable();             break;
         case 0x25: hsplua_cmd::hl_newmetatable();         break;
-        case 0x28: hsplua_cmd::hl_error();                break;
         case 0x29: hsplua_cmd::hl_pushdim();              break;
+		case 0x2A: hsplua_cmd::hl_pushhspvalue();         break;
+		case 0x2B: hsplua_cmd::hl_settop();               break;
 		default: puterror( HSPERR_UNSUPPORTED_FUNCTION ); break;
 	}
 	return RUNMODE_RUN;
@@ -121,6 +122,8 @@ static void *reffunc( int *type_res, int cmd )
 		case 0xA0: *type_res = hsplua_func::hl_checkinteger();    break;
 		case 0xA1: *type_res = hsplua_func::hl_checkstring();     break;
 		case 0xA2: *type_res = hsplua_func::hl_checklstring();    break;
+		case 0xA3: *type_res = hsplua_func::hl_isinteger();       break;
+		case 0x28: *type_res = hsplua_func::hl_error();           break;
 		default: puterror( HSPERR_UNSUPPORTED_FUNCTION );         break;
 	}
 

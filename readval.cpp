@@ -84,7 +84,15 @@ int hsplua_func::hl_dofile() {
 }
 
 int hsplua_func::hl_dostring() {
-    ref_val.ival = luaL_dostring(currState(), exinfo->HspFunc_prm_gets());
+	HSPCTX* ctx2 = (HSPCTX*)malloc(sizeof HSPCTX);
+	memcpy(ctx2, ctx, sizeof HSPCTX);
+
+	void* prev_stack = ctx->prmstack;
+	int prev_sublevel = ctx->sublev;
+	unsigned short* prev_mcs = ctx->mcs;
+    int result = luaL_dostring(currState(), exinfo->HspFunc_prm_gets());
+
+	ref_val.ival = result;
     return HSPVAR_FLAG_INT;
 }
 
@@ -115,4 +123,9 @@ int hsplua_func::hl_seekvar() {
         ref_val.sval = nil;
         return HSPVAR_FLAG_STR;
     }
+}
+
+int hsplua_func::hl_error() {
+	ref_val.ival = luaL_error(currState(), exinfo->HspFunc_prm_gets());
+	return HSPVAR_FLAG_INT;
 }

@@ -10,6 +10,7 @@ namespace hsplua_func {
 	int hl_isnone();
 	int hl_isnoneornil();
 	int hl_isnumber();
+	int hl_isinteger();
 	int hl_isstring();
 	int hl_istable();
 	int hl_isthread();
