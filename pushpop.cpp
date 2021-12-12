@@ -155,3 +155,28 @@ void hsplua_cmd::hl_settop() {
     lua_settop(currState(), exinfo->HspFunc_prm_geti());
     return;
 }
+
+void hsplua_cmd::hl_setvar() {
+    int index = exinfo->HspFunc_seekvar(exinfo->HspFunc_prm_gets());
+    if (index == -1) {
+        stat = -1;
+    }
+
+    stat = 0;
+
+    PVal* pvResult = &ctx->mem_var[index];
+    switch (pvResult->flag) {
+    case HSPVAR_FLAG_STR:
+        pvResult->pt = exinfo->HspFunc_prm_gets();
+        break;
+    case HSPVAR_FLAG_INT:
+        *(int*)pvResult->pt = exinfo->HspFunc_prm_geti();
+        break;
+    case HSPVAR_FLAG_DOUBLE:
+        *(double*)pvResult->pt = exinfo->HspFunc_prm_getd();
+        break;
+    default:
+        stat = -1;
+        break;
+    }
+}

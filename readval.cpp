@@ -1,6 +1,7 @@
 #include "readval.h"
 #include "hsplua.h"
 #include "chkstat.h"
+#include "chktype.h"
 #include "hsp/hsp3plugin.h"
 #include <cstdlib>
 #include <cstring>
@@ -96,6 +97,42 @@ int hsplua_func::hl_dostring() {
     return HSPVAR_FLAG_INT;
 }
 
+int hsplua_func::hl_tohspvalue() {
+    stat = 0;
+	int index = exinfo->HspFunc_prm_geti();
+
+	if (lua_isboolean(currState(), index)) {
+		ref_val.ival = lua_toboolean(currState(), index);
+		return HSPVAR_FLAG_INT;
+	}
+	if (lua_isinteger(currState(), index)) {
+		ref_val.ival = lua_tointeger(currState(), index);
+		return HSPVAR_FLAG_INT;
+	}
+	if (lua_isnumber(currState(), index)) {
+		ref_val.ival = lua_tonumber(currState(), index);
+		return HSPVAR_FLAG_INT;
+	}
+	if (lua_isstring(currState(), index)) {
+		const char* const tmpstr = lua_tostring(currState(), index);
+		const size_t strsz = strlen(tmpstr);
+		char* const tmp_sval = ref_sval; // reallocŽ¸”s‘Îô
+		ref_sval = hspexpand(ref_sval, strsz + 1);
+		if (ref_sval == NULL) { // realloc Ž¸”sŽž
+			ref_sval = tmp_sval;
+			throw HSPERR_OUT_OF_MEMORY;
+		}
+		strncpy(ref_sval, tmpstr, strsz + 1);
+		ref_sval[strsz] = '\0'; // ˆÀ‘S‚Ì‚½‚ß
+		ref_val.sval = ref_sval;
+		return HSPVAR_FLAG_STR;
+	}
+
+    stat = -1;
+	ref_val.ival = 0;
+    return HSPVAR_FLAG_INT;
+}
+
 static char* nil = "__nil__";
 
 int hsplua_func::hl_seekvar() {
@@ -120,6 +157,7 @@ int hsplua_func::hl_seekvar() {
         ref_val.dval = *(double*)pvResult->pt;
         return HSPVAR_FLAG_DOUBLE;
     default:
+		stat = -1;
         ref_val.sval = nil;
         return HSPVAR_FLAG_STR;
     }

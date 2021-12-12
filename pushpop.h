@@ -26,6 +26,7 @@ namespace hsplua_cmd {
     void hl_newtable();
     void hl_newmetatable();
     void hl_settop();
+    void hl_setvar();
 }
 
 #endif
