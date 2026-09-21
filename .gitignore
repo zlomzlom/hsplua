@@ -8,3 +8,4 @@ ipch/
 lua/*
 !lua/README
 .vs/
+out/
