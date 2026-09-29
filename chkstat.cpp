@@ -17,4 +17,3 @@ lua_State* currState() {
 	checkState(currentState);
 	return luaStates[currentState];
 }
-

@@ -5,8 +5,8 @@
 #include "hsp/hsp3plugin.h"
 
 void hsplua_cmd::hl_openlibs() {
-    luaL_openlibs(currState());
-    hsplua_cmd::hl_openlibs_dim();
+	luaL_openlibs(currState());
+	hsplua_cmd::hl_openlibs_dim();
 }
 
 void hsplua_cmd::hl_newstate() { // 新規Luaステート
@@ -23,8 +23,8 @@ void hsplua_cmd::hl_newstate() { // 新規Luaステート
 	if (luaStates.size() <= statNum) luaStates.resize(statNum + 1, NULL);
 	luaStates[statNum] = luaL_newstate(); // 新規ステート
 	if (luaStates[statNum] == NULL) throw HSPERR_OUT_OF_MEMORY;
-    currentState = statNum;
-    hl_openlibs();
+	currentState = statNum;
+	hl_openlibs();
 	stat = statNum;
 	return;
 }

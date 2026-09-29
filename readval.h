@@ -8,16 +8,16 @@ namespace hsplua_func {
 	int hl_tonumber();
 	int hl_topointer();
 	int hl_tostring();
-    int hl_tolstring();
-    int hl_touserdata();
-    int hl_tohspvalue();
-    int hl_gettop();
-    int hl_pcall();
-    int hl_dofile();
-    int hl_dostring();
-    int hl_seekvar();
-    int hl_setvar();
-    int hl_error();
+	int hl_tolstring();
+	int hl_touserdata();
+	int hl_tohspvalue();
+	int hl_gettop();
+	int hl_pcall();
+	int hl_dofile();
+	int hl_dostring();
+	int hl_seekvar();
+	int hl_setvar();
+	int hl_error();
 }
 
 #endif

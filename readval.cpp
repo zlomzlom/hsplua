@@ -35,7 +35,7 @@ int hsplua_func::hl_tostring() {
 	const char* const tmpstr = lua_tostring(currState(), exinfo->HspFunc_prm_geti());
 	const size_t strsz = strlen(tmpstr);
 	char* const tmp_sval = ref_sval; // reallocŽ¸”s‘Îô
-    ref_sval=hspexpand(ref_sval, strsz + 1);
+	ref_sval=hspexpand(ref_sval, strsz + 1);
 	if (ref_sval == NULL) { // realloc Ž¸”sŽž
 		ref_sval = tmp_sval;
 		throw HSPERR_OUT_OF_MEMORY;
@@ -67,21 +67,21 @@ int hsplua_func::hl_touserdata() {
 }
 
 int hsplua_func::hl_gettop() {
-    ref_val.ival = lua_gettop(currState());
-    return HSPVAR_FLAG_INT;
+	ref_val.ival = lua_gettop(currState());
+	return HSPVAR_FLAG_INT;
 }
 
 int hsplua_func::hl_pcall() {
-    int argcount = exinfo->HspFunc_prm_geti();
-    int retcount = exinfo->HspFunc_prm_geti();
-    int errorhandler = exinfo->HspFunc_prm_geti();
-    ref_val.ival = lua_pcall(currState(), argcount, retcount, errorhandler);
-    return HSPVAR_FLAG_INT;
+	int argcount = exinfo->HspFunc_prm_geti();
+	int retcount = exinfo->HspFunc_prm_geti();
+	int errorhandler = exinfo->HspFunc_prm_geti();
+	ref_val.ival = lua_pcall(currState(), argcount, retcount, errorhandler);
+	return HSPVAR_FLAG_INT;
 }
 
 int hsplua_func::hl_dofile() {
-    ref_val.ival = luaL_dofile(currState(), exinfo->HspFunc_prm_gets());
-    return HSPVAR_FLAG_INT;
+	ref_val.ival = luaL_dofile(currState(), exinfo->HspFunc_prm_gets());
+	return HSPVAR_FLAG_INT;
 }
 
 int hsplua_func::hl_dostring() {
@@ -91,14 +91,14 @@ int hsplua_func::hl_dostring() {
 	void* prev_stack = ctx->prmstack;
 	int prev_sublevel = ctx->sublev;
 	unsigned short* prev_mcs = ctx->mcs;
-    int result = luaL_dostring(currState(), exinfo->HspFunc_prm_gets());
+	int result = luaL_dostring(currState(), exinfo->HspFunc_prm_gets());
 
 	ref_val.ival = result;
-    return HSPVAR_FLAG_INT;
+	return HSPVAR_FLAG_INT;
 }
 
 int hsplua_func::hl_tohspvalue() {
-    stat = 0;
+	stat = 0;
 	int index = exinfo->HspFunc_prm_geti();
 
 	if (lua_isboolean(currState(), index)) {
@@ -128,39 +128,39 @@ int hsplua_func::hl_tohspvalue() {
 		return HSPVAR_FLAG_STR;
 	}
 
-    stat = -1;
+	stat = -1;
 	ref_val.ival = 0;
-    return HSPVAR_FLAG_INT;
+	return HSPVAR_FLAG_INT;
 }
 
 static char* nil = "__nil__";
 
 int hsplua_func::hl_seekvar() {
-    int index = exinfo->HspFunc_seekvar(exinfo->HspFunc_prm_gets());
-    if (index == -1) {
+	int index = exinfo->HspFunc_seekvar(exinfo->HspFunc_prm_gets());
+	if (index == -1) {
 		stat = -1;
-        ref_val.sval = nil;
-        return HSPVAR_FLAG_STR;
-    }
+		ref_val.sval = nil;
+		return HSPVAR_FLAG_STR;
+	}
 
 	stat = 0;
 
-    PVal* pvResult = &ctx->mem_var[index];
-    switch (pvResult->flag) {
-    case HSPVAR_FLAG_STR:
-        ref_val.sval = pvResult->pt;
-        return HSPVAR_FLAG_STR;
-    case HSPVAR_FLAG_INT:
-        ref_val.ival = *(int*)pvResult->pt;
-        return HSPVAR_FLAG_INT;
-    case HSPVAR_FLAG_DOUBLE:
-        ref_val.dval = *(double*)pvResult->pt;
-        return HSPVAR_FLAG_DOUBLE;
-    default:
+	PVal* pvResult = &ctx->mem_var[index];
+	switch (pvResult->flag) {
+	case HSPVAR_FLAG_STR:
+		ref_val.sval = pvResult->pt;
+		return HSPVAR_FLAG_STR;
+	case HSPVAR_FLAG_INT:
+		ref_val.ival = *(int*)pvResult->pt;
+		return HSPVAR_FLAG_INT;
+	case HSPVAR_FLAG_DOUBLE:
+		ref_val.dval = *(double*)pvResult->pt;
+		return HSPVAR_FLAG_DOUBLE;
+	default:
 		stat = -1;
-        ref_val.sval = nil;
-        return HSPVAR_FLAG_STR;
-    }
+		ref_val.sval = nil;
+		return HSPVAR_FLAG_STR;
+	}
 }
 
 int hsplua_func::hl_error() {

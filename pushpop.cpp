@@ -61,29 +61,29 @@ void hsplua_cmd::hl_pushvalue() {
 
 void hsplua_cmd::hl_pushhspvalue() {
 	PVal* val = exinfo->HspFunc_prm_getpval();
-    const unsigned short* label = NULL;
+	const unsigned short* label = NULL;
 
-    switch (val->flag) {
-    case HSPVAR_FLAG_STR:
-        lua_pushstring(currState(), val->pt);
-        break;
-    case HSPVAR_FLAG_INT:
-        lua_pushinteger(currState(), *(int*)val->pt);
-        break;
-    case HSPVAR_FLAG_DOUBLE:
-        lua_pushnumber(currState(), *(double*)val->pt);
-        break;
-    case HSPVAR_FLAG_LABEL:
-        label = (unsigned short* )val->pt;
-        lua_pushinteger(currState(), (int)label);
-        lua_pushcclosure(currState(), labelFunc, 1);
-        break;
-    default:
-        lua_pushlightuserdata(currState(), (void*)val->pt);
-        break;
-    }
+	switch (val->flag) {
+	case HSPVAR_FLAG_STR:
+		lua_pushstring(currState(), val->pt);
+		break;
+	case HSPVAR_FLAG_INT:
+		lua_pushinteger(currState(), *(int*)val->pt);
+		break;
+	case HSPVAR_FLAG_DOUBLE:
+		lua_pushnumber(currState(), *(double*)val->pt);
+		break;
+	case HSPVAR_FLAG_LABEL:
+		label = (unsigned short* )val->pt;
+		lua_pushinteger(currState(), (int)label);
+		lua_pushcclosure(currState(), labelFunc, 1);
+		break;
+	default:
+		lua_pushlightuserdata(currState(), (void*)val->pt);
+		break;
+	}
 
-    return;
+	return;
 }
 
 void hsplua_cmd::hl_pushvarptr() {
@@ -93,90 +93,90 @@ void hsplua_cmd::hl_pushvarptr() {
 }
 
 void hsplua_cmd::hl_gettable() {
-    lua_gettable(currState(), exinfo->HspFunc_prm_geti());
-    return;
+	lua_gettable(currState(), exinfo->HspFunc_prm_geti());
+	return;
 }
 
 void hsplua_cmd::hl_getmetatable() {
-    lua_getmetatable(currState(), exinfo->HspFunc_prm_geti());
-    return;
+	lua_getmetatable(currState(), exinfo->HspFunc_prm_geti());
+	return;
 }
 
 void hsplua_cmd::hl_getglobal() {
-    lua_getglobal(currState(), exinfo->HspFunc_prm_gets());
-    return;
+	lua_getglobal(currState(), exinfo->HspFunc_prm_gets());
+	return;
 }
 
 void hsplua_cmd::hl_getfield() {
-    int index = exinfo->HspFunc_prm_geti();
-    const char* name = exinfo->HspFunc_prm_gets();
-    lua_getfield(currState(), index, name);
-    return;
+	int index = exinfo->HspFunc_prm_geti();
+	const char* name = exinfo->HspFunc_prm_gets();
+	lua_getfield(currState(), index, name);
+	return;
 }
 
 void hsplua_cmd::hl_settable() {
-    lua_settable(currState(), exinfo->HspFunc_prm_geti());
-    return;
+	lua_settable(currState(), exinfo->HspFunc_prm_geti());
+	return;
 }
 
 void hsplua_cmd::hl_setmetatable() {
-    lua_setmetatable(currState(), exinfo->HspFunc_prm_geti());
-    return;
+	lua_setmetatable(currState(), exinfo->HspFunc_prm_geti());
+	return;
 }
 
 void hsplua_cmd::hl_setglobal() {
-    lua_setglobal(currState(), exinfo->HspFunc_prm_gets());
-    return;
+	lua_setglobal(currState(), exinfo->HspFunc_prm_gets());
+	return;
 }
 
 void hsplua_cmd::hl_setfield() {
-    int index = exinfo->HspFunc_prm_geti();
-    const char* name = exinfo->HspFunc_prm_gets();
-    lua_setfield(currState(), index, name);
-    return;
+	int index = exinfo->HspFunc_prm_geti();
+	const char* name = exinfo->HspFunc_prm_gets();
+	lua_setfield(currState(), index, name);
+	return;
 }
 
 void hsplua_cmd::hl_pushglobaltable() {
-    lua_pushglobaltable(currState());
-    return;
+	lua_pushglobaltable(currState());
+	return;
 }
 
 void hsplua_cmd::hl_newmetatable() {
-    luaL_newmetatable(currState(), exinfo->HspFunc_prm_gets());
-    return;
+	luaL_newmetatable(currState(), exinfo->HspFunc_prm_gets());
+	return;
 }
 
 void hsplua_cmd::hl_newtable() {
-    lua_newtable(currState());
-    return;
+	lua_newtable(currState());
+	return;
 }
 
 void hsplua_cmd::hl_settop() {
-    lua_settop(currState(), exinfo->HspFunc_prm_geti());
-    return;
+	lua_settop(currState(), exinfo->HspFunc_prm_geti());
+	return;
 }
 
 void hsplua_cmd::hl_setvar() {
-    int index = exinfo->HspFunc_seekvar(exinfo->HspFunc_prm_gets());
-    if (index == -1) {
-        stat = -1;
-    }
+	int index = exinfo->HspFunc_seekvar(exinfo->HspFunc_prm_gets());
+	if (index == -1) {
+		stat = -1;
+	}
 
-    stat = 0;
+	stat = 0;
 
-    PVal* pvResult = &ctx->mem_var[index];
-    switch (pvResult->flag) {
-    case HSPVAR_FLAG_STR:
-        pvResult->pt = exinfo->HspFunc_prm_gets();
-        break;
-    case HSPVAR_FLAG_INT:
-        *(int*)pvResult->pt = exinfo->HspFunc_prm_geti();
-        break;
-    case HSPVAR_FLAG_DOUBLE:
-        *(double*)pvResult->pt = exinfo->HspFunc_prm_getd();
-        break;
-    default:
-        stat = -1;
-        break;
-    }
+	PVal* pvResult = &ctx->mem_var[index];
+	switch (pvResult->flag) {
+	case HSPVAR_FLAG_STR:
+		pvResult->pt = exinfo->HspFunc_prm_gets();
+		break;
+	case HSPVAR_FLAG_INT:
+		*(int*)pvResult->pt = exinfo->HspFunc_prm_geti();
+		break;
+	case HSPVAR_FLAG_DOUBLE:
+		*(double*)pvResult->pt = exinfo->HspFunc_prm_getd();
+		break;
+	default:
+		stat = -1;
+		break;
+	}
 }
