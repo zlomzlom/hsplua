@@ -34,14 +34,14 @@ int hsplua_func::hl_topointer() {
 int hsplua_func::hl_tostring() {
 	const char* const tmpstr = lua_tostring(currState(), exinfo->HspFunc_prm_geti());
 	const size_t strsz = strlen(tmpstr);
-	char* const tmp_sval = ref_sval; // realloc¸”s‘Îô
+	char* const tmp_sval = ref_sval; // reallocå¤±æ•—å¯¾ç­–
 	ref_sval=hspexpand(ref_sval, strsz + 1);
-	if (ref_sval == NULL) { // realloc ¸”s
+	if (ref_sval == NULL) { // realloc å¤±æ•—æ™‚
 		ref_sval = tmp_sval;
 		throw HSPERR_OUT_OF_MEMORY;
 	}
 	strncpy(ref_sval, tmpstr, strsz + 1);
-	ref_sval[strsz] = '\0'; // ˆÀ‘S‚Ì‚½‚ß
+	ref_sval[strsz] = '\0'; // å®‰å…¨ã®ãŸã‚
 	ref_val.sval = ref_sval;
 	return HSPVAR_FLAG_STR;
 }
@@ -49,14 +49,14 @@ int hsplua_func::hl_tostring() {
 int hsplua_func::hl_tolstring() {
 	size_t strsz = 0;
 	const char* const tmpstr = luaL_tolstring(currState(), exinfo->HspFunc_prm_geti(), &strsz);
-	char* const tmp_sval = ref_sval; // realloc¸”s‘Îô
+	char* const tmp_sval = ref_sval; // reallocå¤±æ•—å¯¾ç­–
 	ref_sval = hspexpand(ref_sval, strsz + 1);
-	if (ref_sval == NULL) { // realloc ¸”s
+	if (ref_sval == NULL) { // realloc å¤±æ•—æ™‚
 		ref_sval = tmp_sval;
 		throw HSPERR_OUT_OF_MEMORY;
 	}
 	strncpy(ref_sval, tmpstr, strsz + 1);
-	ref_sval[strsz] = '\0'; // ˆÀ‘S‚Ì‚½‚ß
+	ref_sval[strsz] = '\0'; // å®‰å…¨ã®ãŸã‚
 	ref_val.sval = ref_sval;
 	return HSPVAR_FLAG_STR;
 }
@@ -116,14 +116,14 @@ int hsplua_func::hl_tohspvalue() {
 	if (lua_isstring(currState(), index)) {
 		const char* const tmpstr = lua_tostring(currState(), index);
 		const size_t strsz = strlen(tmpstr);
-		char* const tmp_sval = ref_sval; // realloc¸”s‘Îô
+		char* const tmp_sval = ref_sval; // reallocå¤±æ•—å¯¾ç­–
 		ref_sval = hspexpand(ref_sval, strsz + 1);
-		if (ref_sval == NULL) { // realloc ¸”s
+		if (ref_sval == NULL) { // realloc å¤±æ•—æ™‚
 			ref_sval = tmp_sval;
 			throw HSPERR_OUT_OF_MEMORY;
 		}
 		strncpy(ref_sval, tmpstr, strsz + 1);
-		ref_sval[strsz] = '\0'; // ˆÀ‘S‚Ì‚½‚ß
+		ref_sval[strsz] = '\0'; // å®‰å…¨ã®ãŸã‚
 		ref_val.sval = ref_sval;
 		return HSPVAR_FLAG_STR;
 	}

@@ -1,18 +1,18 @@
 ;--------------------------------------------------
-; HSP �w���v �\�[�X�t�@�C�� (hs �`��)
-; hs �t�@�C���̏����ɂ��ẮAHS_BIBLE.txt ���Q�Ƃ��Ă��������B
+; HSP ヘルプ ソースファイル (hs 形式)
+; hs ファイルの書式については、HS_BIBLE.txt を参照してください。
 
 ;--------------------------------------------------
-; ���� hs �t�@�C���̃f�t�H���g�̃t�B�[���h�l��ݒ�
+; この hs ファイルのデフォルトのフィールド値を設定
 
 %dll
 HSPLUA
 
 %ver
-; �o�[�W���� ���L��
+; バージョン を記入
 
 %date
-; ���t ���L��
+; 日付 を記入
 
 %author
 MihailJP
@@ -21,129 +21,129 @@ MihailJP
 https://github.com/MihailJP/hsplua
 
 %note
-hsplua.as���C���N���[�h���邱�ƁB
+hsplua.asをインクルードすること。
 
 %type
-�g������
+拡張命令
 
 %port
 Win
 
 %portinfo
-; �ڐA�̃q���g ���L��
+; 移植のヒント を記入
 
 %index
 hl_newstate
-�V�KLua�X�e�[�g���쐬
+新規Luaステートを作成
 
 %prm
 p1
-p1=0�`(-1) : �X�e�[�g�ԍ�
+p1=0～(-1) : ステート番号
 
 %inst
-�V���� Lua �X�e�[�g���쐬���܂��B
-���� Lua �@�\���Ăяo���O�ɁA�܂����̖��߂����s����K�v������܂��B
-���̖��߂����s����ƁA�쐬���ꂽ�X�e�[�g���A�N�e�B�u�ɂȂ�܂��B
+新しい Lua ステートを作成します。
+他の Lua 機能を呼び出す前に、まずこの命令を実行する必要があります。
+この命令を実行すると、作成されたステートがアクティブになります。
 
-p1�ɂ̓X�e�[�g�Ǘ��p�̔ԍ����w�肵�܂��B
-�ȗ����ꂽ�ꍇ�� -1 ���w�肳�ꂽ�ꍇ�A�����I�ɋ󂢂Ă���ԍ����I�΂�܂��B
+p1にはステート管理用の番号を指定します。
+省略された場合や -1 が指定された場合、自動的に空いている番号が選ばれます。
 
-�X�e�[�g�̍쐬�Ɏ��s�����ꍇ�A�G���[���������܂��B
-���������ꍇ�́A stat �ɍ쐬���ꂽ�X�e�[�g�ԍ����������܂��B
+ステートの作成に失敗した場合、エラーが発生します。
+成功した場合は、 stat に作成されたステート番号が代入されます。
 
 %sample
-; �T���v���X�N���v�g ���L��
+; サンプルスクリプト を記入
 
 %href
 hl_switchstate
 hl_close
 
 %group
-Lua�X�e�[�g�Ǘ�����
+Luaステート管理命令
 
 %index
 hl_switchstate
-�A�N�e�B�u��Lua�X�e�[�g��؂�ւ���
+アクティブなLuaステートを切り替える
 
 %prm
 p1
-p1=0�` : �X�e�[�g�ԍ�
+p1=0～ : ステート番号
 
 %inst
-�w�肳�ꂽ Lua �X�e�[�g���A�N�e�B�u�ɂ��܂��B
-�ȍ~�̑���́A�w�肳�ꂽ Lua �X�e�[�g�ɑ΂��čs���܂��B
-�w�肷��X�e�[�g�͗\�� hl_newstate �ŏ���������Ă���K�v������܂��B
+指定された Lua ステートをアクティブにします。
+以降の操作は、指定された Lua ステートに対して行われます。
+指定するステートは予め hl_newstate で初期化されている必要があります。
 
 %sample
-; �T���v���X�N���v�g ���L��
+; サンプルスクリプト を記入
 
 %href
 hl_newstate
 
 %group
-Lua�X�e�[�g�Ǘ�����
+Luaステート管理命令
 
 %index
 hl_close
-Lua�X�e�[�g���������
+Luaステートを解放する
 
 %prm
 p1
-p1=0�`(�ȗ���) : �X�e�[�g�ԍ�
+p1=0～(省略可) : ステート番号
 
 %inst
-�K�v�Ȃ��Ȃ��� Lua �X�e�[�g��������܂��B
+必要なくなった Lua ステートを解放します。
 
-p1�ɂ̓X�e�[�g�Ǘ��p�̔ԍ����w�肵�܂��B
-�ȗ����ꂽ�ꍇ�� -1 ���w�肳�ꂽ�ꍇ�A���݃A�N�e�B�u�ȃX�e�[�g���������܂��B
+p1にはステート管理用の番号を指定します。
+省略された場合や -1 が指定された場合、現在アクティブなステートが解放されます。
 
-�A�N�e�B�u�ȃX�e�[�g����������ꍇ�ł��A�A�N�e�B�u�ȃX�e�[�g�̔ԍ��͕ύX����܂���B
-����ς݂̃X�e�[�g�ɑ΂��đ��삵�悤�Ƃ���ƁA�G���[���������܂��B
+アクティブなステートを解放した場合でも、アクティブなステートの番号は変更されません。
+解放済みのステートに対して操作しようとすると、エラーが発生します。
 
 %sample
-; �T���v���X�N���v�g ���L��
+; サンプルスクリプト を記入
 
 %href
 hl_newstate
 
 %group
-Lua�X�e�[�g�Ǘ�����
+Luaステート管理命令
 
 %index
 hl_pop
-�X�^�b�N����l����������
+スタックから値を除去する
 
 %prm
 p1
-p1=1�`(1) : ��
+p1=1～(1) : 個数
 
 %inst
-Lua �̃X�^�b�N�����ԏ�̒l���������܂��B
+Lua のスタックから一番上の値を除去します。
 
-p1���w�肳�ꂽ�ꍇ�A��ԏォ��w�肳�ꂽ�������X�^�b�N����l���������܂��B
+p1が指定された場合、一番上から指定された個数だけスタックから値を除去します。
 
 %sample
-; �T���v���X�N���v�g ���L��
+; サンプルスクリプト を記入
 
 %href
-; �֘A���� ���L��
+; 関連項目 を記入
 
 %group
-Lua�X�^�b�N���얽��
+Luaスタック操作命令
 
 %index
 hl_pushboolean
-�u�[���l���X�^�b�N�ɐς�
+ブール値をスタックに積む
 
 %prm
 p1
-p1 : �i�[����l
+p1 : 格納する値
 
 %inst
-Lua �̃X�^�b�N�ɁAp1 �Ŏw�肳�ꂽ�l���u�[���l�Ƃ��Đς݂܂��B
+Lua のスタックに、p1 で指定された値をブール値として積みます。
 
 %sample
-; �T���v���X�N���v�g ���L��
+; サンプルスクリプト を記入
 
 %href
 hl_pushfunction
@@ -157,27 +157,27 @@ hl_pushvalue
 hl_pushvarptr
 
 %group
-Lua�X�^�b�N���얽��
+Luaスタック操作命令
 
 %index
 hl_pushfunction
-�֐����X�^�b�N�ɐς�
+関数をスタックに積む
 
 %prm
 *label
-*label : ��ѐ惉�x��
+*label : 飛び先ラベル
 
 %inst
-Lua �̃X�^�b�N�ɁA�w�肳�ꂽ���x�����֐��Ƃ��Đς݂܂��B
+Lua のスタックに、指定されたラベルを関数として積みます。
 
-Lua ����֐����Ă΂��ƁA�w�肳�ꂽ���x���� gosub ���܂��B
-�֐��̎������́A�Ăяo���ꂽ���ɃX�^�b�N�Ɋi�[����Ă��܂��B
+Lua から関数が呼ばれると、指定されたラベルに gosub します。
+関数の実引数は、呼び出された時にスタックに格納されています。
 
-�֐�����߂�Ƃ��́A�߂�l���X�^�b�N�ɐς݁A
-return �̈����ɖ߂�l�̌���(�����^��)�w�肵�Ă��������B
+関数から戻るときは、戻り値をスタックに積み、
+return の引数に戻り値の個数を(整数型で)指定してください。
 
 %sample
-; �T���v���X�N���v�g ���L��
+; サンプルスクリプト を記入
 
 %href
 hl_pushboolean
@@ -191,21 +191,21 @@ hl_pushvalue
 hl_pushvarptr
 
 %group
-Lua�X�^�b�N���얽��
+Luaスタック操作命令
 
 %index
 hl_pushinteger
-�����l���X�^�b�N�ɐς�
+整数値をスタックに積む
 
 %prm
 p1
-p1 : �i�[����l
+p1 : 格納する値
 
 %inst
-Lua �̃X�^�b�N�ɁAp1 �Ŏw�肳�ꂽ�l�𐮐��l�Ƃ��Đς݂܂��B
+Lua のスタックに、p1 で指定された値を整数値として積みます。
 
 %sample
-; �T���v���X�N���v�g ���L��
+; サンプルスクリプト を記入
 
 %href
 hl_pushboolean
@@ -219,22 +219,22 @@ hl_pushvalue
 hl_pushvarptr
 
 %group
-Lua�X�^�b�N���얽��
+Luaスタック操作命令
 
 %index
 hl_pushlightuserdata
-�|�C���^���X�^�b�N�ɐς�
+ポインタをスタックに積む
 
 %prm
 p1
-p1 : �i�[����l
+p1 : 格納する値
 
 %inst
-Lua �̃X�^�b�N�ɁAp1 �Ŏw�肳�ꂽ�l���|�C���^�l�Ƃ݂Ȃ��Đς݂܂��B
-���̒l�� Lua �̌y�ʃ��[�U�[�f�[�^�^�Ƃ��Ċi�[����܂��B
+Lua のスタックに、p1 で指定された値をポインタ値とみなして積みます。
+この値は Lua の軽量ユーザーデータ型として格納されます。
 
 %sample
-; �T���v���X�N���v�g ���L��
+; サンプルスクリプト を記入
 
 %href
 hl_pushboolean
@@ -248,26 +248,26 @@ hl_pushvalue
 hl_pushvarptr
 
 %group
-Lua�X�^�b�N���얽��
+Luaスタック操作命令
 
 %index
 hl_pushlstring
-������^�ϐ��̓��e���X�^�b�N�ɐς�
+文字列型変数の内容をスタックに積む
 
 %prm
 p1, p2
-p1=�ϐ�        : �i�[����o�b�t�@
-p2=0�`(�ȗ���) : �i�[����T�C�Y
+p1=変数        : 格納するバッファ
+p2=0～(省略可) : 格納するサイズ
 
 %inst
-Lua �̃X�^�b�N�ɁAp1 �Ŏw�肳�ꂽ������ϐ��̒��g��ς݂܂��B
-���̒l�� Lua �̕�����^�Ƃ��Ċi�[����܂��B
+Lua のスタックに、p1 で指定された文字列変数の中身を積みます。
+この値は Lua の文字列型として格納されます。
 
-p2 �ɂ́A�i�[����o�b�t�@�̑傫�����w�肵�܂��B
-p2 ���ȗ����ꂽ�ꍇ�Ap1 �̗v�f�̑傫�����w�肳�ꂽ���̂Ƃ݂Ȃ���܂��B
+p2 には、格納するバッファの大きさを指定します。
+p2 が省略された場合、p1 の要素の大きさが指定されたものとみなされます。
 
 %sample
-; �T���v���X�N���v�g ���L��
+; サンプルスクリプト を記入
 
 %href
 hl_pushboolean
@@ -281,19 +281,19 @@ hl_pushvalue
 hl_pushvarptr
 
 %group
-Lua�X�^�b�N���얽��
+Luaスタック操作命令
 
 %index
 hl_pushnil
-nil�l���X�^�b�N�ɐς�
+nil値をスタックに積む
 
 %prm
 
 %inst
-Lua �̃X�^�b�N�� nil �l��ς݂܂��B
+Lua のスタックに nil 値を積みます。
 
 %sample
-; �T���v���X�N���v�g ���L��
+; サンプルスクリプト を記入
 
 %href
 hl_pushboolean
@@ -307,49 +307,49 @@ hl_pushvalue
 hl_pushvarptr
 
 %group
-Lua�X�^�b�N���얽��
+Luaスタック操作命令
 
 %index
 hl_pushnumber
-���������_���l���X�^�b�N�ɐς�
-
-%prm
-p1
-p1 : �i�[����l
-
-%inst
-Lua �̃X�^�b�N�ɁAp1 �Ŏw�肳�ꂽ�l�𕂓������_���l�Ƃ��Đς݂܂��B
-
-%sample
-; �T���v���X�N���v�g ���L��
-
-%href
-hl_pushboolean
-hl_pushfunction
-hl_pushinteger
-hl_pushlightuserdata
-hl_pushlstring
-hl_pushnil
-hl_pushstring
-hl_pushvalue
-hl_pushvarptr
-
-%group
-Lua�X�^�b�N���얽��
-
-%index
-hl_pushstring
-��������X�^�b�N�ɐς�
+浮動小数点数値をスタックに積む
 
 %prm
 p1
-p1 : �i�[���镶����
+p1 : 格納する値
 
 %inst
-Lua �̃X�^�b�N�ɁAp1 �Ŏw�肳�ꂽ�������ς݂܂��B
+Lua のスタックに、p1 で指定された値を浮動小数点数値として積みます。
 
 %sample
-; �T���v���X�N���v�g ���L��
+; サンプルスクリプト を記入
+
+%href
+hl_pushboolean
+hl_pushfunction
+hl_pushinteger
+hl_pushlightuserdata
+hl_pushlstring
+hl_pushnil
+hl_pushstring
+hl_pushvalue
+hl_pushvarptr
+
+%group
+Luaスタック操作命令
+
+%index
+hl_pushstring
+文字列をスタックに積む
+
+%prm
+p1
+p1 : 格納する文字列
+
+%inst
+Lua のスタックに、p1 で指定された文字列を積みます。
+
+%sample
+; サンプルスクリプト を記入
 
 %href
 hl_pushboolean
@@ -363,21 +363,21 @@ hl_pushvalue
 hl_pushvarptr
 
 %group
-Lua�X�^�b�N���얽��
+Luaスタック操作命令
 
 %index
 hl_pushvalue
-�X�^�b�N���̕ʂ̒l���X�^�b�N�ɐς�
+スタック内の別の値をスタックに積む
 
 %prm
 p1
-p1 : �i�[����l�̃C���f�b�N�X
+p1 : 格納する値のインデックス
 
 %inst
-Lua �̃X�^�b�N�ɁAp1 �Ŏw�肳�ꂽ�X�^�b�N�C���f�b�N�X�̒l��ς݂܂��B
+Lua のスタックに、p1 で指定されたスタックインデックスの値を積みます。
 
 %sample
-; �T���v���X�N���v�g ���L��
+; サンプルスクリプト を記入
 
 %href
 hl_pushboolean
@@ -391,22 +391,22 @@ hl_pushstring
 hl_pushvarptr
 
 %group
-Lua�X�^�b�N���얽��
+Luaスタック操作命令
 
 %index
 hl_pushvarptr
-�ϐ��̃|�C���^���X�^�b�N�ɐς�
+変数のポインタをスタックに積む
 
 %prm
 p1
-p1=�ϐ� : �i�[����ϐ�
+p1=変数 : 格納する変数
 
 %inst
-Lua �̃X�^�b�N�ɁAp1 �Ŏw�肳�ꂽ�ϐ��̃|�C���^��ς݂܂��B
-���̒l�� Lua �̌y�ʃ��[�U�[�f�[�^�^�Ƃ��Ċi�[����܂��B
+Lua のスタックに、p1 で指定された変数のポインタを積みます。
+この値は Lua の軽量ユーザーデータ型として格納されます。
 
 %sample
-; �T���v���X�N���v�g ���L��
+; サンプルスクリプト を記入
 
 %href
 hl_pushboolean
@@ -420,22 +420,22 @@ hl_pushstring
 hl_pushvalue
 
 %group
-Lua�X�^�b�N���얽��
+Luaスタック操作命令
 
 %index
 hl_gcstop
-�K�[�x�W�R���N�^���~����
+ガーベジコレクタを停止する
 
 %prm
 
 %inst
-�K�[�x�W�R���N�^�̎������s���~���܂��B
+ガーベジコレクタの自動実行を停止します。
 
-�����I�ȃK�[�x�W�R���N�V�������ĊJ����ɂ́Ahl_gcrestart ���߂��g�p���܂��B
-hl_gccollect ���߂��g�p���邱�ƂŁA�����I�ɃK�[�x�W�R���N�V���������s���܂��B
+自動的なガーベジコレクションを再開するには、hl_gcrestart 命令を使用します。
+hl_gccollect 命令を使用することで、明示的にガーベジコレクションを実行します。
 
 %sample
-; �T���v���X�N���v�g ���L��
+; サンプルスクリプト を記入
 
 %href
 hl_gcrestart
@@ -443,19 +443,19 @@ hl_gccollect
 hl_gcstep
 
 %group
-Lua�K�[�x�W�R���N�^���䖽��
+Luaガーベジコレクタ制御命令
 
 %index
 hl_gcrestart
-�K�[�x�W�R���N�^���ĊJ����
+ガーベジコレクタを再開する
 
 %prm
 
 %inst
-�K�[�x�W�R���N�^�̎������s���ĊJ���܂��B
+ガーベジコレクタの自動実行を再開します。
 
 %sample
-; �T���v���X�N���v�g ���L��
+; サンプルスクリプト を記入
 
 %href
 hl_gcstop
@@ -463,19 +463,19 @@ hl_gccollect
 hl_gcstep
 
 %group
-Lua�K�[�x�W�R���N�^���䖽��
+Luaガーベジコレクタ制御命令
 
 %index
 hl_gccollect
-�K�[�x�W�R���N�V���������s����
+ガーベジコレクションを実行する
 
 %prm
 
 %inst
-�K�[�x�W�R���N�V�����̊��S�ȃT�C�N�������s���܂��B
+ガーベジコレクションの完全なサイクルを実行します。
 
 %sample
-; �T���v���X�N���v�g ���L��
+; サンプルスクリプト を記入
 
 %href
 hl_gcstop
@@ -483,22 +483,22 @@ hl_gcrestart
 hl_gcstep
 
 %group
-Lua�K�[�x�W�R���N�^���䖽��
+Luaガーベジコレクタ制御命令
 
 %index
 hl_gcstep
-�K�[�x�W�R���N�V�������X�e�b�v���s����
+ガーベジコレクションをステップ実行する
 
 %prm
 (p1)
-p1 : �X�e�b�v�T�C�Y
+p1 : ステップサイズ
 
 %inst
-�K�[�x�W�R���N�V�������X�e�b�v���s���܂��Bp1 �ɂ̓X�e�b�v�T�C�Y���w�肵�܂��B
-���̃X�e�b�v�ŃK�[�x�W�R���N�V�����̃T�C�N�����I�������ꍇ�Astat �� 1 ���Ԃ�܂��B
+ガーベジコレクションをステップ実行します。p1 にはステップサイズを指定します。
+このステップでガーベジコレクションのサイクルが終了した場合、stat に 1 が返ります。
 
 %sample
-; �T���v���X�N���v�g ���L��
+; サンプルスクリプト を記入
 
 %href
 hl_gcstop
@@ -506,139 +506,139 @@ hl_gcrestart
 hl_gccollect
 
 %group
-Lua�K�[�x�W�R���N�^���䖽��
+Luaガーベジコレクタ制御命令
 
 %index
 hl_gcsetpause
-�K�[�x�W�R���N�^�̒�~���Ԃ�ݒ肷��
+ガーベジコレクタの停止期間を設定する
 
 %prm
 p1
-p1 : �ݒ肷��l
+p1 : 設定する値
 
 %inst
-�K�[�x�W�R���N�^�̒�~���Ԃ� p1 �ɐݒ肵�܂��B
-stat �ɈȑO�̒l���Ԃ�܂��B
+ガーベジコレクタの停止期間を p1 に設定します。
+stat に以前の値が返ります。
 
 %sample
-; �T���v���X�N���v�g ���L��
+; サンプルスクリプト を記入
 
 %href
 hl_gcsetstepmul
 
 %group
-Lua�K�[�x�W�R���N�^���䖽��
+Luaガーベジコレクタ制御命令
 
 %index
 hl_gcsetstepmul
-�K�[�x�W�R���N�^�̃X�e�b�v�W����ݒ肷��
+ガーベジコレクタのステップ係数を設定する
 
 %prm
 p1
-p1 : �ݒ肷��l
+p1 : 設定する値
 
 %inst
-�K�[�x�W�R���N�^�̃X�e�b�v�W���� p1 �ɐݒ肵�܂��B
-stat �ɈȑO�̒l���Ԃ�܂��B
+ガーベジコレクタのステップ係数を p1 に設定します。
+stat に以前の値が返ります。
 
 %sample
-; �T���v���X�N���v�g ���L��
+; サンプルスクリプト を記入
 
 %href
 hl_gcsetpause
 
 %group
-Lua�K�[�x�W�R���N�^���䖽��
+Luaガーベジコレクタ制御命令
 
 %index
 hl_gcgen
-����ʃK�[�x�W�R���N�V�������w������
+世代別ガーベジコレクションを指示する
 
 %prm
 
 %inst
-����ʃK�[�x�W�R���N�V�����ɕύX���܂��B
-Lua 5.2.1 �ł́A����͎����I�ȋ@�\�ł��邱�Ƃɒ��ӂ��Ă��������B
+世代別ガーベジコレクションに変更します。
+Lua 5.2.1 では、これは実験的な機能であることに注意してください。
 
 %sample
-; �T���v���X�N���v�g ���L��
+; サンプルスクリプト を記入
 
 %href
 hl_gcinc
 
 %group
-Lua�K�[�x�W�R���N�^���䖽��
+Luaガーベジコレクタ制御命令
 
 %index
 hl_gcinc
-�C���N�������^���K�[�x�W�R���N�V�������w������
+インクリメンタルガーベジコレクションを指示する
 
 %prm
 
 %inst
-�C���N�������^���K�[�x�W�R���N�V�����ɕύX���܂��B
-Lua 5.2.1 �ł́A����̓f�t�H���g�̃��[�h�ł��B
+インクリメンタルガーベジコレクションに変更します。
+Lua 5.2.1 では、これはデフォルトのモードです。
 
 %sample
-; �T���v���X�N���v�g ���L��
+; サンプルスクリプト を記入
 
 %href
 hl_gcgen
 
 %group
-Lua�K�[�x�W�R���N�^���䖽��
+Luaガーベジコレクタ制御命令
 
 %index
 hl_gccount
-Lua ���g�p���Ă��郁�����̗ʂ�Ԃ�
+Lua が使用しているメモリの量を返す
 
 %prm
 ()
 
 %inst
-Lua ���g�p���Ă��錻�݂̃������ʂ�Ԃ��܂��B�Ԃ�l�͕��������_�^�ŁA�P�ʂ̓L���o�C�g�ł��B
+Lua が使用している現在のメモリ量を返します。返り値は浮動小数点型で、単位はキロバイトです。
 
 %sample
-; �T���v���X�N���v�g ���L��
+; サンプルスクリプト を記入
 
 %href
-; �֘A���� ���L��
+; 関連項目 を記入
 
 %group
-Lua�K�[�x�W�R���N�^����֐�
+Luaガーベジコレクタ制御関数
 
 %index
 hl_gcisrunning
-�K�[�x�W�R���N�^�����s�����ǂ�����Ԃ�
+ガーベジコレクタが実行中かどうかを返す
 
 %prm
 ()
 
 %inst
-�K�[�x�W�R���N�^�����s���ł���ΐ^�A�����łȂ���΋U��Ԃ��܂��B
+ガーベジコレクタが実行中であれば真、そうでなければ偽を返します。
 
 %sample
-; �T���v���X�N���v�g ���L��
+; サンプルスクリプト を記入
 
 %href
-; �֘A���� ���L��
+; 関連項目 を記入
 
 %group
-Lua�K�[�x�W�R���N�^����֐�
+Luaガーベジコレクタ制御関数
 
 %index
 hl_isboolean
-�u�[���l���ǂ����m�F����
+ブール値かどうか確認する
 
 %prm
 (p1)
-p1 : �X�^�b�N�̃C���f�b�N�X
+p1 : スタックのインデックス
 
 %inst
-Lua �̃X�^�b�N�Ŏw�肳�ꂽ�C���f�b�N�X�̓��e���u�[���l�Ȃ�� 1�A�����łȂ���� 0 ��Ԃ��܂��B
+Lua のスタックで指定されたインデックスの内容がブール値ならば 1、そうでなければ 0 を返します。
 
 %sample
-; �T���v���X�N���v�g ���L��
+; サンプルスクリプト を記入
 
 %href
 hl_iscfunction
@@ -654,26 +654,26 @@ hl_isthread
 hl_isuserdata
 
 %group
-Lua�X�^�b�N��Ԏ擾�֐�
+Luaスタック状態取得関数
 
 %type
-�g���֐�
+拡張関数
 
 %index
 hl_iscfunction
-C�̊֐����ǂ����m�F����
+Cの関数かどうか確認する
 
 %prm
 (p1)
-p1 : �X�^�b�N�̃C���f�b�N�X
+p1 : スタックのインデックス
 
 %inst
-Lua �̃X�^�b�N�Ŏw�肳�ꂽ�C���f�b�N�X�̓��e�� C �̊֐��Ȃ�� 1�A�����łȂ���� 0 ��Ԃ��܂��B
+Lua のスタックで指定されたインデックスの内容が C の関数ならば 1、そうでなければ 0 を返します。
 
-hl_pushfunction �Ő��������֐��́A���ۂɂ� C �̃N���[�W���Ƃ��Ď�������Ă��܂��B
+hl_pushfunction で生成される関数は、実際には C のクロージャとして実装されています。
 
 %sample
-; �T���v���X�N���v�g ���L��
+; サンプルスクリプト を記入
 
 %href
 hl_isboolean
@@ -689,24 +689,24 @@ hl_isthread
 hl_isuserdata
 
 %group
-Lua�X�^�b�N��Ԏ擾�֐�
+Luaスタック状態取得関数
 
 %type
-�g���֐�
+拡張関数
 
 %index
 hl_isfunction
-�֐����ǂ����m�F����
+関数かどうか確認する
 
 %prm
 (p1)
-p1 : �X�^�b�N�̃C���f�b�N�X
+p1 : スタックのインデックス
 
 %inst
-Lua �̃X�^�b�N�Ŏw�肳�ꂽ�C���f�b�N�X�̓��e���֐��Ȃ�� 1�A�����łȂ���� 0 ��Ԃ��܂��B
+Lua のスタックで指定されたインデックスの内容が関数ならば 1、そうでなければ 0 を返します。
 
 %sample
-; �T���v���X�N���v�g ���L��
+; サンプルスクリプト を記入
 
 %href
 hl_pushfunction
@@ -723,24 +723,24 @@ hl_isthread
 hl_isuserdata
 
 %group
-Lua�X�^�b�N��Ԏ擾�֐�
+Luaスタック状態取得関数
 
 %type
-�g���֐�
+拡張関数
 
 %index
 hl_islightuserdata
-�y�ʃ��[�U�[�f�[�^���ǂ����m�F����
+軽量ユーザーデータかどうか確認する
 
 %prm
 (p1)
-p1 : �X�^�b�N�̃C���f�b�N�X
+p1 : スタックのインデックス
 
 %inst
-Lua �̃X�^�b�N�Ŏw�肳�ꂽ�C���f�b�N�X�̓��e���y�ʃ��[�U�[�f�[�^�Ȃ�� 1�A�����łȂ���� 0 ��Ԃ��܂��B
+Lua のスタックで指定されたインデックスの内容が軽量ユーザーデータならば 1、そうでなければ 0 を返します。
 
 %sample
-; �T���v���X�N���v�g ���L��
+; サンプルスクリプト を記入
 
 %href
 hl_isboolean
@@ -756,24 +756,24 @@ hl_isthread
 hl_isuserdata
 
 %group
-Lua�X�^�b�N��Ԏ擾�֐�
+Luaスタック状態取得関数
 
 %type
-�g���֐�
+拡張関数
 
 %index
 hl_isnil
-nil�l���ǂ����m�F����
+nil値かどうか確認する
 
 %prm
 (p1)
-p1 : �X�^�b�N�̃C���f�b�N�X
+p1 : スタックのインデックス
 
 %inst
-Lua �̃X�^�b�N�Ŏw�肳�ꂽ�C���f�b�N�X�̓��e�� nil �Ȃ�� 1�A�����łȂ���� 0 ��Ԃ��܂��B
+Lua のスタックで指定されたインデックスの内容が nil ならば 1、そうでなければ 0 を返します。
 
 %sample
-; �T���v���X�N���v�g ���L��
+; サンプルスクリプト を記入
 
 %href
 hl_isboolean
@@ -789,25 +789,25 @@ hl_isthread
 hl_isuserdata
 
 %group
-Lua�X�^�b�N��Ԏ擾�֐�
+Luaスタック状態取得関数
 
 %type
-�g���֐�
+拡張関数
 
 %index
 hl_isnone
-�C���f�b�N�X���������ǂ����m�F����
+インデックスが無効かどうか確認する
 
 %prm
 (p1)
-p1 : �X�^�b�N�̃C���f�b�N�X
+p1 : スタックのインデックス
 
 %inst
-Lua �̃X�^�b�N�Ŏw�肳�ꂽ�C���f�b�N�X�������Ȃ�� 1�A�����łȂ���� 0 ��Ԃ��܂��B
-���Ȃ킿�Ap1 �����݂̃X�^�b�N�̊O�����w���Ă���Ȃ�� 1 ��Ԃ��܂��B
+Lua のスタックで指定されたインデックスが無効ならば 1、そうでなければ 0 を返します。
+すなわち、p1 が現在のスタックの外側を指しているならば 1 を返します。
 
 %sample
-; �T���v���X�N���v�g ���L��
+; サンプルスクリプト を記入
 
 %href
 hl_isboolean
@@ -823,24 +823,24 @@ hl_isthread
 hl_isuserdata
 
 %group
-Lua�X�^�b�N��Ԏ擾�֐�
+Luaスタック状態取得関数
 
 %type
-�g���֐�
+拡張関数
 
 %index
 hl_isnoneornil
-nil�l�܂��̓C���f�b�N�X���������ǂ����m�F����
+nil値またはインデックスが無効かどうか確認する
 
 %prm
 (p1)
-p1 : �X�^�b�N�̃C���f�b�N�X
+p1 : スタックのインデックス
 
 %inst
-Lua �̃X�^�b�N�Ŏw�肳�ꂽ�C���f�b�N�X�̓��e���������A���e�� nil �Ȃ�� 1�A�����łȂ���� 0 ��Ԃ��܂��B
+Lua のスタックで指定されたインデックスの内容が無効か、内容が nil ならば 1、そうでなければ 0 を返します。
 
 %sample
-; �T���v���X�N���v�g ���L��
+; サンプルスクリプト を記入
 
 %href
 hl_isboolean
@@ -856,24 +856,24 @@ hl_isthread
 hl_isuserdata
 
 %group
-Lua�X�^�b�N��Ԏ擾�֐�
+Luaスタック状態取得関数
 
 %type
-�g���֐�
+拡張関数
 
 %index
 hl_isnumber
-���l���ǂ����m�F����
+数値かどうか確認する
 
 %prm
 (p1)
-p1 : �X�^�b�N�̃C���f�b�N�X
+p1 : スタックのインデックス
 
 %inst
-Lua �̃X�^�b�N�Ŏw�肳�ꂽ�C���f�b�N�X�̓��e�����l�Ȃ�� 1�A�����łȂ���� 0 ��Ԃ��܂��B
+Lua のスタックで指定されたインデックスの内容が数値ならば 1、そうでなければ 0 を返します。
 
 %sample
-; �T���v���X�N���v�g ���L��
+; サンプルスクリプト を記入
 
 %href
 hl_isboolean
@@ -889,24 +889,24 @@ hl_isthread
 hl_isuserdata
 
 %group
-Lua�X�^�b�N��Ԏ擾�֐�
+Luaスタック状態取得関数
 
 %type
-�g���֐�
+拡張関数
 
 %index
 hl_isstring
-�����񂩂ǂ����m�F����
+文字列かどうか確認する
 
 %prm
 (p1)
-p1 : �X�^�b�N�̃C���f�b�N�X
+p1 : スタックのインデックス
 
 %inst
-Lua �̃X�^�b�N�Ŏw�肳�ꂽ�C���f�b�N�X�̓��e��������Ȃ�� 1�A�����łȂ���� 0 ��Ԃ��܂��B
+Lua のスタックで指定されたインデックスの内容が文字列ならば 1、そうでなければ 0 を返します。
 
 %sample
-; �T���v���X�N���v�g ���L��
+; サンプルスクリプト を記入
 
 %href
 hl_isboolean
@@ -922,24 +922,24 @@ hl_isthread
 hl_isuserdata
 
 %group
-Lua�X�^�b�N��Ԏ擾�֐�
+Luaスタック状態取得関数
 
 %type
-�g���֐�
+拡張関数
 
 %index
 hl_istable
-�e�[�u�����ǂ����m�F����
+テーブルかどうか確認する
 
 %prm
 (p1)
-p1 : �X�^�b�N�̃C���f�b�N�X
+p1 : スタックのインデックス
 
 %inst
-Lua �̃X�^�b�N�Ŏw�肳�ꂽ�C���f�b�N�X�̓��e���e�[�u���Ȃ�� 1�A�����łȂ���� 0 ��Ԃ��܂��B
+Lua のスタックで指定されたインデックスの内容がテーブルならば 1、そうでなければ 0 を返します。
 
 %sample
-; �T���v���X�N���v�g ���L��
+; サンプルスクリプト を記入
 
 %href
 hl_isboolean
@@ -955,24 +955,24 @@ hl_isthread
 hl_isuserdata
 
 %group
-Lua�X�^�b�N��Ԏ擾�֐�
+Luaスタック状態取得関数
 
 %type
-�g���֐�
+拡張関数
 
 %index
 hl_isthread
-�X���b�h���ǂ����m�F����
+スレッドかどうか確認する
 
 %prm
 (p1)
-p1 : �X�^�b�N�̃C���f�b�N�X
+p1 : スタックのインデックス
 
 %inst
-Lua �̃X�^�b�N�Ŏw�肳�ꂽ�C���f�b�N�X�̓��e���X���b�h�Ȃ�� 1�A�����łȂ���� 0 ��Ԃ��܂��B
+Lua のスタックで指定されたインデックスの内容がスレッドならば 1、そうでなければ 0 を返します。
 
 %sample
-; �T���v���X�N���v�g ���L��
+; サンプルスクリプト を記入
 
 %href
 hl_isboolean
@@ -988,24 +988,24 @@ hl_istable
 hl_isuserdata
 
 %group
-Lua�X�^�b�N��Ԏ擾�֐�
+Luaスタック状態取得関数
 
 %type
-�g���֐�
+拡張関数
 
 %index
 hl_isuserdata
-���[�U�[�f�[�^���ǂ����m�F����
+ユーザーデータかどうか確認する
 
 %prm
 (p1)
-p1 : �X�^�b�N�̃C���f�b�N�X
+p1 : スタックのインデックス
 
 %inst
-Lua �̃X�^�b�N�Ŏw�肳�ꂽ�C���f�b�N�X�̓��e�����[�U�[�f�[�^�Ȃ�� 1�A�����łȂ���� 0 ��Ԃ��܂��B
+Lua のスタックで指定されたインデックスの内容がユーザーデータならば 1、そうでなければ 0 を返します。
 
 %sample
-; �T���v���X�N���v�g ���L��
+; サンプルスクリプト を記入
 
 %href
 hl_isboolean
@@ -1021,25 +1021,25 @@ hl_istable
 hl_isthread
 
 %group
-Lua�X�^�b�N��Ԏ擾�֐�
+Luaスタック状態取得関数
 
 %type
-�g���֐�
+拡張関数
 
 %index
 hl_toboolean
-�X�^�b�N����u�[���l���擾����
+スタックからブール値を取得する
 
 %prm
 (p1)
-p1 : �X�^�b�N�̃C���f�b�N�X
+p1 : スタックのインデックス
 
 %inst
-Lua �̃X�^�b�N�Ŏw�肳�ꂽ�C���f�b�N�X�̓��e���u�[���l�ɒ����ĕԂ��܂��B
-Lua �ł́Afalse �� nil �݂̂��U�ł���A����ȊO�̒l�͑S�Đ^�ƂȂ�܂��B
+Lua のスタックで指定されたインデックスの内容をブール値に直して返します。
+Lua では、false と nil のみが偽であり、それ以外の値は全て真となります。
 
 %sample
-; �T���v���X�N���v�g ���L��
+; サンプルスクリプト を記入
 
 %href
 hl_pushboolean
@@ -1052,22 +1052,22 @@ hl_tostring
 hl_touserdata
 
 %group
-Lua�X�^�b�N�擾�֐�
+Luaスタック取得関数
 
 %index
 hl_tocfunction
-�X�^�b�N����C�̊֐��̃|�C���^���擾����
+スタックからCの関数のポインタを取得する
 
 %prm
 (p1)
-p1 : �X�^�b�N�̃C���f�b�N�X
+p1 : スタックのインデックス
 
 %inst
-Lua �̃X�^�b�N�Ŏw�肳�ꂽ�C���f�b�N�X�̓��e�� C �̊֐��̃|�C���^�ŕԂ��܂��B
-�C���f�b�N�X�̓��e���֐��łȂ���΁A�k���|�C���^���Ԃ�܂��B
+Lua のスタックで指定されたインデックスの内容を C の関数のポインタで返します。
+インデックスの内容が関数でなければ、ヌルポインタが返ります。
 
 %sample
-; �T���v���X�N���v�g ���L��
+; サンプルスクリプト を記入
 
 %href
 hl_pushfunction
@@ -1081,21 +1081,21 @@ hl_tostring
 hl_touserdata
 
 %group
-Lua�X�^�b�N�擾�֐�
+Luaスタック取得関数
 
 %index
 hl_tointeger
-�X�^�b�N���琮�����擾����
+スタックから整数を取得する
 
 %prm
 (p1)
-p1 : �X�^�b�N�̃C���f�b�N�X
+p1 : スタックのインデックス
 
 %inst
-Lua �̃X�^�b�N�Ŏw�肳�ꂽ�C���f�b�N�X�̓��e�𐮐��l�ɒ����ĕԂ��܂��B
+Lua のスタックで指定されたインデックスの内容を整数値に直して返します。
 
 %sample
-; �T���v���X�N���v�g ���L��
+; サンプルスクリプト を記入
 
 %href
 hl_pushinteger
@@ -1107,21 +1107,21 @@ hl_tostring
 hl_touserdata
 
 %group
-Lua�X�^�b�N�擾�֐�
+Luaスタック取得関数
 
 %index
 hl_tonumber
-�X�^�b�N���畂�������_�����擾����
+スタックから浮動小数点数を取得する
 
 %prm
 (p1)
-p1 : �X�^�b�N�̃C���f�b�N�X
+p1 : スタックのインデックス
 
 %inst
-Lua �̃X�^�b�N�Ŏw�肳�ꂽ�C���f�b�N�X�̓��e�𕂓������_���l�ɒ����ĕԂ��܂��B
+Lua のスタックで指定されたインデックスの内容を浮動小数点数値に直して返します。
 
 %sample
-; �T���v���X�N���v�g ���L��
+; サンプルスクリプト を記入
 
 %href
 hl_pushnumber
@@ -1134,24 +1134,24 @@ hl_tostring
 hl_touserdata
 
 %group
-Lua�X�^�b�N�擾�֐�
+Luaスタック取得関数
 
 %index
 hl_topointer
-�X�^�b�N����|�C���^���擾����
+スタックからポインタを取得する
 
 %prm
 (p1)
-p1 : �X�^�b�N�̃C���f�b�N�X
+p1 : スタックのインデックス
 
 %inst
-Lua �̃X�^�b�N�Ŏw�肳�ꂽ�C���f�b�N�X�̓��e���|�C���^�ɒ����ĕԂ��܂��B
-�A���A���e�����[�U�[�f�[�^�A�e�[�u���A�X���b�h�A�֐��̂����ꂩ�łȂ���΁A�k���|�C���^��Ԃ��܂��B
+Lua のスタックで指定されたインデックスの内容をポインタに直して返します。
+但し、内容がユーザーデータ、テーブル、スレッド、関数のいずれかでなければ、ヌルポインタを返します。
 
-���̊֐��͒ʏ�A�f�o�b�O���̂��߂����Ɏg���܂��B
+この関数は通常、デバッグ情報のためだけに使われます。
 
 %sample
-; �T���v���X�N���v�g ���L��
+; サンプルスクリプト を記入
 
 %href
 hl_toboolean
@@ -1162,21 +1162,21 @@ hl_tostring
 hl_touserdata
 
 %group
-Lua�X�^�b�N�擾�֐�
+Luaスタック取得関数
 
 %index
 hl_tostring
-�X�^�b�N���當������擾����
+スタックから文字列を取得する
 
 %prm
 (p1)
-p1 : �X�^�b�N�̃C���f�b�N�X
+p1 : スタックのインデックス
 
 %inst
-Lua �̃X�^�b�N�Ŏw�肳�ꂽ�C���f�b�N�X�̓��e�𕶎���ɕϊ����A���̒l��Ԃ��܂��B
+Lua のスタックで指定されたインデックスの内容を文字列に変換し、その値を返します。
 
 %sample
-; �T���v���X�N���v�g ���L��
+; サンプルスクリプト を記入
 
 %href
 hl_pushlstring
@@ -1190,23 +1190,23 @@ hl_topointer
 hl_touserdata
 
 %group
-Lua�X�^�b�N�擾�֐�
+Luaスタック取得関数
 
 %index
 hl_touserdata
-�X�^�b�N���烆�[�U�[�f�[�^�̃|�C���^���擾����
+スタックからユーザーデータのポインタを取得する
 
 %prm
 (p1)
-p1 : �X�^�b�N�̃C���f�b�N�X
+p1 : スタックのインデックス
 
 %inst
-Lua �̃X�^�b�N�Ŏw�肳�ꂽ�C���f�b�N�X�̓��e���t�����[�U�[�f�[�^�ł���΁A���̃A�h���X��Ԃ��܂��B
-���e���y�ʃ��[�U�[�f�[�^�ł���΁A���̃|�C���^��Ԃ��܂��B
-����ȊO�̏ꍇ�A�k���|�C���^��Ԃ��܂��B
+Lua のスタックで指定されたインデックスの内容がフルユーザーデータであれば、そのアドレスを返します。
+内容が軽量ユーザーデータであれば、そのポインタを返します。
+それ以外の場合、ヌルポインタを返します。
 
 %sample
-; �T���v���X�N���v�g ���L��
+; サンプルスクリプト を記入
 
 %href
 hl_pushlightuserdata
@@ -1220,5 +1220,5 @@ hl_topointer
 hl_tostring
 
 %group
-Lua�X�^�b�N�擾�֐�
+Luaスタック取得関数
 

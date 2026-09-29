@@ -9,8 +9,8 @@ void hsplua_cmd::hl_openlibs() {
 	hsplua_cmd::hl_openlibs_dim();
 }
 
-void hsplua_cmd::hl_newstate() { // 怴婯Lua僗僥乕僩
-	int statNum = exinfo->HspFunc_prm_getdi(-1); // 僗僥乕僩娗棟斣崋
+void hsplua_cmd::hl_newstate() { // 鏂拌Lua銈广儐銉笺儓
+	int statNum = exinfo->HspFunc_prm_getdi(-1); // 銈广儐銉笺儓绠＄悊鐣彿
 	if (statNum == -1) {
 		statNum = luaStates.size();
 		for (int i = 0; i < luaStates.size(); ++i) {
@@ -19,9 +19,9 @@ void hsplua_cmd::hl_newstate() { // 怴婯Lua僗僥乕僩
 			}
 		}
 	}
-	if (statNum < 0) throw HSPERR_ILLEGAL_FUNCTION; // 儅僀僫僗傪巜掕偟偰偨応崌
+	if (statNum < 0) throw HSPERR_ILLEGAL_FUNCTION; // 銉炪偆銉娿偣銈掓寚瀹氥仐銇︺仧鍫村悎
 	if (luaStates.size() <= statNum) luaStates.resize(statNum + 1, NULL);
-	luaStates[statNum] = luaL_newstate(); // 怴婯僗僥乕僩
+	luaStates[statNum] = luaL_newstate(); // 鏂拌銈广儐銉笺儓
 	if (luaStates[statNum] == NULL) throw HSPERR_OUT_OF_MEMORY;
 	currentState = statNum;
 	hl_openlibs();
@@ -29,15 +29,15 @@ void hsplua_cmd::hl_newstate() { // 怴婯Lua僗僥乕僩
 	return;
 }
 
-void hsplua_cmd::hl_switchstate() { // Lua僗僥乕僩愗傝懼偊
-	int statNum = exinfo->HspFunc_prm_geti(); // 僗僥乕僩娗棟斣崋
+void hsplua_cmd::hl_switchstate() { // Lua銈广儐銉笺儓鍒囥倞鏇裤亪
+	int statNum = exinfo->HspFunc_prm_geti(); // 銈广儐銉笺儓绠＄悊鐣彿
 	checkState(statNum);
 	currentState = statNum;
 	return;
 }
 
-void hsplua_cmd::hl_close() { // Lua僗僥乕僩攋婞
-	int statNum = exinfo->HspFunc_prm_getdi(luaStates.size()); // 僗僥乕僩娗棟斣崋
+void hsplua_cmd::hl_close() { // Lua銈广儐銉笺儓鐮存
+	int statNum = exinfo->HspFunc_prm_getdi(luaStates.size()); // 銈广儐銉笺儓绠＄悊鐣彿
 	checkState(statNum);
 	lua_close(luaStates[statNum]);
 	luaStates[statNum] = NULL;

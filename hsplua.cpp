@@ -26,11 +26,11 @@ unsigned currentState = 0;
 
 static int cmdfunc( int cmd )
 {
-	//		Àsˆ— (–½—ßÀs‚ÉŒÄ‚Î‚ê‚Ü‚·)
+	//		å®Ÿè¡Œå‡¦ç† (å‘½ä»¤å®Ÿè¡Œæ™‚ã«å‘¼ã°ã‚Œã¾ã™)
 	//
-	code_next();							// Ÿ‚ÌƒR[ƒh‚ğæ“¾(Å‰‚É•K‚¸•K—v‚Å‚·)
+	code_next();							// æ¬¡ã®ã‚³ãƒ¼ãƒ‰ã‚’å–å¾—(æœ€åˆã«å¿…ãšå¿…è¦ã§ã™)
 
-	switch( cmd ) {							// ƒTƒuƒRƒ}ƒ“ƒh‚²‚Æ‚Ì•ªŠò
+	switch( cmd ) {							// ã‚µãƒ–ã‚³ãƒãƒ³ãƒ‰ã”ã¨ã®åˆ†å²
 		case 0x00: hsplua_cmd::hl_newstate();			break;
 		case 0x01: hsplua_cmd::hl_switchstate();		break;
 		case 0x02: hsplua_cmd::hl_close();				break;
@@ -75,23 +75,23 @@ static int cmdfunc( int cmd )
 
 /*------------------------------------------------------------*/
 
-RefVal ref_val;						// •Ô’l‚Ì‚½‚ß‚Ì•Ï”
+RefVal ref_val;						// è¿”å€¤ã®ãŸã‚ã®å¤‰æ•°
 char* ref_sval = NULL;
 
 static void *reffunc( int *type_res, int cmd )
 {
-	//		ŠÖ”EƒVƒXƒeƒ€•Ï”‚ÌÀsˆ— (’l‚ÌQÆ‚ÉŒÄ‚Î‚ê‚Ü‚·)
+	//		é–¢æ•°ãƒ»ã‚·ã‚¹ãƒ†ãƒ å¤‰æ•°ã®å®Ÿè¡Œå‡¦ç† (å€¤ã®å‚ç…§æ™‚ã«å‘¼ã°ã‚Œã¾ã™)
 	//
 
 	int answerType = 0;
 
-	//			'('‚Ån‚Ü‚é‚©‚ğ’²‚×‚é
+	//			'('ã§å§‹ã¾ã‚‹ã‹ã‚’èª¿ã¹ã‚‹
 	//
 	if ( *type != TYPE_MARK ) puterror( HSPERR_INVALID_FUNCPARAM );
 	if ( *val != '(' ) puterror( HSPERR_INVALID_FUNCPARAM );
 	code_next();
 
-	switch( cmd ) {							// ƒTƒuƒRƒ}ƒ“ƒh‚²‚Æ‚Ì•ªŠò
+	switch( cmd ) {							// ã‚µãƒ–ã‚³ãƒãƒ³ãƒ‰ã”ã¨ã®åˆ†å²
 		case 0x80: *type_res = hsplua_func::hl_isboolean();		  break;
 		case 0x81: *type_res = hsplua_func::hl_iscfunction();	  break;
 		case 0x82: *type_res = hsplua_func::hl_isfunction();	  break;
@@ -129,7 +129,7 @@ static void *reffunc( int *type_res, int cmd )
 		default: puterror(HSPERR_UNSUPPORTED_FUNCTION);			  break;
 	}
 
-	//			'('‚ÅI‚í‚é‚©‚ğ’²‚×‚é
+	//			'('ã§çµ‚ã‚ã‚‹ã‹ã‚’èª¿ã¹ã‚‹
 	//
 	if ( *type != TYPE_MARK ) puterror( HSPERR_INVALID_FUNCPARAM );
 	if ( *val != ')' ) puterror( HSPERR_INVALID_FUNCPARAM );
@@ -147,7 +147,7 @@ static void *reffunc( int *type_res, int cmd )
 
 static int termfunc( int option )
 {
-	//		I—¹ˆ— (ƒAƒvƒŠƒP[ƒVƒ‡ƒ“I—¹‚ÉŒÄ‚Î‚ê‚Ü‚·)
+	//		çµ‚äº†å‡¦ç† (ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³çµ‚äº†æ™‚ã«å‘¼ã°ã‚Œã¾ã™)
 	//
 	return 0;
 }
@@ -160,7 +160,7 @@ static int termfunc( int option )
 
 int WINAPI DllMain (HINSTANCE hInstance, DWORD fdwReason, PVOID pvReserved)
 {
-	//		DLLƒGƒ“ƒgƒŠ[ (‰½‚à‚·‚é•K—v‚Í‚ ‚è‚Ü‚¹‚ñ)
+	//		DLLã‚¨ãƒ³ãƒˆãƒªãƒ¼ (ä½•ã‚‚ã™ã‚‹å¿…è¦ã¯ã‚ã‚Šã¾ã›ã‚“)
 	//
 	return TRUE;
 }
@@ -168,15 +168,15 @@ int WINAPI DllMain (HINSTANCE hInstance, DWORD fdwReason, PVOID pvReserved)
 
 EXPORT void WINAPI hsp3cmdinit( HSP3TYPEINFO *info )
 {
-	//		ƒvƒ‰ƒOƒCƒ“‰Šú‰» (ÀsEI—¹ˆ—‚ğ“o˜^‚µ‚Ü‚·)
+	//		ãƒ—ãƒ©ã‚°ã‚¤ãƒ³åˆæœŸåŒ– (å®Ÿè¡Œãƒ»çµ‚äº†å‡¦ç†ã‚’ç™»éŒ²ã—ã¾ã™)
 	//
-	hsp3sdk_init( info );		// SDK‚Ì‰Šú‰»(Å‰‚És‚È‚Á‚Ä‰º‚³‚¢)
+	hsp3sdk_init( info );		// SDKã®åˆæœŸåŒ–(æœ€åˆã«è¡Œãªã£ã¦ä¸‹ã•ã„)
 
 	ref_sval = (char*)hspmalloc(64);
 
-	info->cmdfunc = cmdfunc;		// ÀsŠÖ”(cmdfunc)‚Ì“o˜^
-	info->reffunc = reffunc;		// QÆŠÖ”(reffunc)‚Ì“o˜^
-	info->termfunc = termfunc;		// I—¹ŠÖ”(termfunc)‚Ì“o˜^
+	info->cmdfunc = cmdfunc;		// å®Ÿè¡Œé–¢æ•°(cmdfunc)ã®ç™»éŒ²
+	info->reffunc = reffunc;		// å‚ç…§é–¢æ•°(reffunc)ã®ç™»éŒ²
+	info->termfunc = termfunc;		// çµ‚äº†é–¢æ•°(termfunc)ã®ç™»éŒ²
 }
 
 /*------------------------------------------------------------*/

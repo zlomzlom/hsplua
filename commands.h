@@ -2,9 +2,9 @@
 #define __COMMANDS_H
 
 namespace hsplua_cmd {
-	void hl_newstate(); // V‹KLuaƒXƒe[ƒg
-	void hl_switchstate(); // LuaƒXƒe[ƒgØ‚è‘Ö‚¦
-	void hl_close(); // LuaƒXƒe[ƒg”jŠü
+	void hl_newstate(); // æ–°è¦Luaã‚¹ãƒ†ãƒ¼ãƒˆ
+	void hl_switchstate(); // Luaã‚¹ãƒ†ãƒ¼ãƒˆåˆ‡ã‚Šæ›¿ãˆ
+	void hl_close(); // Luaã‚¹ãƒ†ãƒ¼ãƒˆç ´æ£„
 	void hl_openlibs();
 }
 
