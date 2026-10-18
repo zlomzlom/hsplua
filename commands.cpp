@@ -1,8 +1,10 @@
 #include "commands.h"
+
+#include "chkstat.h"
 #include "dim.h"
 #include "hsplua.h"
-#include "chkstat.h"
-#include "hsp/hsp3plugin.h"
+
+#include <hsp3plugin.h>
 
 void hsplua_cmd::hl_openlibs() {
 	luaL_openlibs(currState());

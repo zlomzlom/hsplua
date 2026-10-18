@@ -1,7 +1,9 @@
 #include "dim.h"
-#include "hsplua.h"
+
 #include "chkstat.h"
-#include "hsp/hsp3plugin.h"
+#include "hsplua.h"
+
+#include <hsp3plugin.h>
 
 struct DimWrapper {
 	int level;

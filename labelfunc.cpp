@@ -1,8 +1,10 @@
 #include "labelfunc.h"
-#include <stdexcept>
+
 #include "chkstat.h"
 #include "hsplua.h"
-#include "hsp/hsp3plugin.h"
+
+#include <hsp3plugin.h>
+#include <stdexcept>
 
 int labelFunc(lua_State* l) {
 	unsigned short* const label = (unsigned short*)lua_tointeger(l, lua_upvalueindex(1));

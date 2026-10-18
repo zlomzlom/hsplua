@@ -1,7 +1,9 @@
 #include "gc.h"
-#include "hsplua.h"
+
 #include "chkstat.h"
-#include "hsp/hsp3plugin.h"
+#include "hsplua.h"
+
+#include <hsp3plugin.h>
 
 void hsplua_cmd::hl_gcstop() { // GC停止
 	lua_gc(currState(), LUA_GCSTOP, 0);

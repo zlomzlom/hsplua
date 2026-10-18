@@ -1,7 +1,9 @@
 #include "chktype.h"
-#include "hsplua.h"
+
 #include "chkstat.h"
-#include "hsp/hsp3plugin.h"
+#include "hsplua.h"
+
+#include <hsp3plugin.h>
 
 int hsplua_func::hl_isboolean() {
 	ref_val.ival = lua_isboolean(currState(), exinfo->HspFunc_prm_geti());

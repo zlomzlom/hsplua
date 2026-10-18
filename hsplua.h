@@ -1,7 +1,7 @@
 #ifndef __HSPLUA_H
 #define __HSPLUA_H
 
-#include "lua53/src/lua.hpp"
+#include <lua.hpp>
 #include <vector>
 
 extern std::vector<lua_State*> luaStates;

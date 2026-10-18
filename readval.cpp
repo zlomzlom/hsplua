@@ -1,10 +1,12 @@
 #include "readval.h"
-#include "hsplua.h"
+
 #include "chkstat.h"
 #include "chktype.h"
-#include "hsp/hsp3plugin.h"
+#include "hsplua.h"
+
 #include <cstdlib>
 #include <cstring>
+#include <hsp3plugin.h>
 
 int hsplua_func::hl_toboolean() {
 	ref_val.ival = lua_toboolean(currState(), exinfo->HspFunc_prm_geti());

@@ -3,17 +3,19 @@
 //		HSPLUA
 //
 
-#include <windows.h>
 #include "hsplua.h"
-#include "hsp/hsp3plugin.h"
-#include "hsp/hspvar_core.h"
-#include "commands.h"
-#include "pushpop.h"
+
 #include "chktype.h"
-#include "readval.h"
+#include "commands.h"
 #include "dim.h"
 #include "gc.h"
+#include "pushpop.h"
+#include "readval.h"
+
 #include <cstdlib>
+#include <hsp3plugin.h>
+#include <hspvar_core.h>
+#include <windows.h>
 
  /*------------------------------------------------------------*/
 /*

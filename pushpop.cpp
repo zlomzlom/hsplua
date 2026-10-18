@@ -1,8 +1,10 @@
 #include "pushpop.h"
-#include "hsplua.h"
+
 #include "chkstat.h"
-#include "hsp/hsp3plugin.h"
+#include "hsplua.h"
 #include "labelfunc.h"
+
+#include <hsp3plugin.h>
 
 void hsplua_cmd::hl_pop() {
 	lua_pop(currState(), exinfo->HspFunc_prm_getdi(1));
